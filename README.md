@@ -15,6 +15,7 @@ pip install -r requirements.txt
 
 ### Create a .env file in the root directory and add your Pinecone credentials as follows:
 PINECONE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
 PINECONE_INDEX_NAME= "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 Download the quantize model from the link provided in model folder & keep the model in the model directory:
