@@ -22,3 +22,10 @@ vectorstore = PineconeVectorStore.from_texts(pinecone_api_key=KEY,
                                              index_name=INDEX,
                                              embedding=embedding,
                                              texts=[text.page_content for text in text_chunks])
+
+
+
+#function to get the pine cone vector
+def get_vector_document():
+    vectore_docuemnt = PineconeVectorStore.from_existing_index(index_name=INDEX,embedding=embedding)
+    return vectore_docuemnt
