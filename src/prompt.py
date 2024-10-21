@@ -1,9 +1,12 @@
 from langchain.prompts import PromptTemplate
 from langchain.llms import CTransformers
-from store_index import get_vector_document
 from langchain.chains import RetrievalQA
+from dotenv import load_dotenv
+from langchain_pinecone import PineconeVectorStore
+from src.helper import download_hugging_face_embedding
 import os
 
+INDEX = os.getenv("PINECONE_INDEX_NAME")
 
 
 prompt_template="""
@@ -16,8 +19,9 @@ Question: {question}
 Only return the helpful answer below and nothing else.
 Helpful answer:
 """
+embedding = download_hugging_face_embedding()
 
-vector_document = get_vector_document()
+vector_document =  PineconeVectorStore.from_existing_index(index_name=INDEX,embedding=embedding)
 
 
 PROMPT=PromptTemplate(template=prompt_template, input_variables=["context", "question"])
